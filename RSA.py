@@ -15,7 +15,7 @@ class RSA:
 
         self.letras=[["a",1],["b",2],["c",3],["d",4],["e",5],["f",6],["g",7],["h",8],["i",9],["j",10],["k",11],["l",12],["m",13],["n",14],["ñ",15],["o",16],["p",17],["q",18],["r",19],["s",20],["t",21],["u",22],["v",23],["w",24],["x",25],["y",26],["z",27],
                 ["A",28],["B",29],["C",30],["D",31],["E",32],["F",33],["G",34],["H",35],["I",36],["J",37],["K",38],["L",39],["M",40],["N",41],["Ñ",42],["O",43],["P",44],["Q",45],["R",46],["S",47],["T",48],["U",49],["V",50],["W",51],["X",52],["Y",53],["Z",54],
-                [" ",55],["1",56],["2",57],["3",58],["4",59],["5",60],["6",61],["7",62],["8",63],["9",64],["10",65],["\n",66],["",67],["_",68]]
+                [" ",55],[",",56],[".",57],["1",58],["2",59],["3",60],["4",61],["5",62],["6",63],["7",64],["8",65],["9",66],["10",67],["'",68],["\n",69],["",70],["_",71]]
 
         self.numerosPrimos=[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89,97]
 
@@ -97,20 +97,20 @@ class RSA:
             if not self.tengoUnSaltoDeLinea:
                 #lo busca
                 if(letra=="\\"):
-                    print("encontro el /")
+                    #print("encontro el /")
                     self.tengoUnSaltoDeLinea=True
                     return self.letras[len(self.letras)-2][1]
                 elif (i[0] == letra):
                     return i[1]
             else:
                 self.tengoUnSaltoDeLinea=False
-                print("Entroo")
+                #print("Entroo")
                 if(letra=="n"):
                     return self.letras[len(self.letras)-3][1]
 
 
         if not self.mensajeNoAceptadoMostrado:
-            print("El mensaje que encripta tiene caracteres no aceptados, seran remplazados por '-'")
+            #print("El mensaje que encripta tiene caracteres no aceptados, seran remplazados por '-'")
             self.mensajeNoAceptadoMostrado=True
         return self.letras[len(self.letras)-1][1]
 
@@ -151,7 +151,7 @@ class RSA:
         stringSubirEncriptado =""
         stringSubirEncriptado+=str(self.n)+"\n"
         stringSubirEncriptado+=str(self.d)+"\n"
-        print(len(arregloEncriptado))
+        #print(len(arregloEncriptado))
         for i in (range(len(arregloEncriptado))):
 
              stringSubirEncriptado+=str(arregloEncriptado[i])+","
@@ -173,7 +173,7 @@ class RSA:
         except IOError:
             print("No se peude abrir ")
         else:
-            print("leo")
+#            print("leo")
             enQueLineaVamos=0
             for linea in leerArchivo:
                 if(enQueLineaVamos==0):
@@ -188,12 +188,12 @@ class RSA:
                 enQueLineaVamos+=1
             for i in range(len((separar))):
                 separar[i]=int(separar[i])
-            print(n[0])
-            print(d[0])
-            print(separar)
+ #           print(n[0])
+  #          print(d[0])
+   #         print(separar)
         #self.des(arregloEncriptado,self.n,self.d)
         dato=d[0]
-        print(int(float(dato)))
+    #    print(int(float(dato)))
 
         self.des(separar,int(n[0]),int(float(d[0])))
 
@@ -252,10 +252,12 @@ def __main__():
     # tmp=i.split(".")
 
     for i in archivosFinal:
-        print(i)
+        print("Procesando "+i)
         nombre=i
         nombre=nombre.split(".")
         prueba=RSA(nombre[0])
+        print("Termine de procesar "+i+"\n")
+
     """
     nombre="archivo.txt"
     nombre=nombre.split(".")
